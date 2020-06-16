@@ -1,6 +1,6 @@
-USE employees;
+USE employees_db;
 
-INSERT INTO employee 
+INSERT INTO employee_db
     (first_name, last_name)
 Values
     ('John', 'Doe')

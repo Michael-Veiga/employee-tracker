@@ -1,4 +1,5 @@
 // require inquirer and console.table
+var inquirer = require("inquirer");
 // require the Database class
 
 // create a prompt when the app is started
