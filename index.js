@@ -13,7 +13,7 @@ async function runSearch() {
     name: "choice",
     message: "What would you like to do?",
     choices: [
-      "VIEW_EMPLOYEES_DB",
+      "VIEW_EMPLOYEE",
       "VIEW_DEPARTMENT",
       "VIEW_ROLES",
       "ADD_EMPLOYEE",
@@ -22,18 +22,21 @@ async function runSearch() {
       "EXIT",
     ],
   });
+  // if the user selects to view employees, its going to call the getEmployees function down below
   switch (choice) {
-    case "VIEW_EMPLOYEES_DB":
+    case "VIEW_EMPLOYEE":
+      // return the getEmployees function to add case to
       return getEmployees();
     case "VIEW_DEPARTMENT":
       return getDepartments();
+    case "VIEW_ROLES":
+      return getRoles();
     case "EXIT":
       connection.end();
       break;
   }
 }
 
-// if the user selects to view employees, its going to call the getEmployees function down below
 // call the findEmployees function from the database class that we created
 
 async function getEmployees() {
@@ -46,4 +49,10 @@ async function getDepartments() {
   console.table(findDepartmentInfo);
 }
 
+async function getRoles() {
+  const findRoleInfo = await Database.findRole();
+  console.table(findRoleInfo);
+}
+
+async function addEmployees() {}
 runSearch();

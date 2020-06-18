@@ -21,10 +21,7 @@ class Database {
     return this.connection.query("SELECT * FROM employee");
   }
   findRole() {
-    return this.connection.query(
-      "SELECT first_name, last_name FROM role",
-      role
-    );
+    return this.connection.query("SELECT * FROM roles");
   }
 }
 
