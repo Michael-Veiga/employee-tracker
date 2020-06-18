@@ -10,31 +10,29 @@ CREATE TABLE department
     name VARCHAR(30),
     PRIMARY KEY(id)
 );
--- create a roles table
+-- create a role table
 CREATE TABLE roles
 (
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(30),
     salary DECIMAL (9,2),
 -- create unique identifier for other tables to use
-    department_id INT,
+    department_id INT NULL,
     PRIMARY KEY(id),
--- use foreign keys to link tables together
-    FOREIGN KEY (department_id) REFERENCES department(id)
-
+    FOREIGN KEY(department_id) REFERENCES department(id)
 ); 
 
 -- create a employees table
 CREATE TABLE employee
 (
-    id INT AUTO_INREMENT,
-    first_name VARCHAR(30),
-    last_name VARCHAR(30),
+    id INT AUTO_INCREMENT,
+    first_name VARCHAR(30) NULL,
+    last_name VARCHAR(30) NULL,
     -- create unique id for employee role
-    roles_id INT NULL,
+    role_id INT (30) NULL,
     -- create unique id for employees manager / can be null
-    manager_id INT NULL,
+    manager_id INT (30) NULL,
     PRIMARY KEY(id),
-    FOREIGN KEY (roles_id) REFERENCES roles(id),
+    FOREIGN KEY (role_id) REFERENCES roles(id),
     FOREIGN KEY (manager_id) REFERENCES employee(id)
 ); 

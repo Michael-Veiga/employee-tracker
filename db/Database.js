@@ -6,39 +6,26 @@ class Database {
   }
 
   createDepartments() {
-    return this.connection
-      .query
-      // select table that you want to access
-      ();
+    return this.connection.query("INSERT INTO department SET ?", department);
   }
   createEmployee() {
-    return this.connection
-      .query
-      // select table that you want to access
-      ();
+    return this.connection.query("INSERT INTO employee SET ?", employee);
   }
   createRole() {
-    return this.connection
-      .query
-      // select table that you want to access
-      ();
+    return this.connection.query("INSERT INTO role SET ?", role);
   }
-  getDepartments() {
-    return this.connection
-      .query
-      // select table that you want to access
-      ();
+  findDepartments() {
+    return this.connection.query("SELECT * FROM department");
   }
-  getEmployee() {
-    return this.connection
-      .query
-      // select table that you want to access
-      ();
+  findEmployees() {
+    return this.connection.query("SELECT * FROM employee");
   }
-  getRole() {
-    return this.connection
-      .query
-      // select table that you want to access
-      ();
+  findRole() {
+    return this.connection.query(
+      "SELECT first_name, last_name FROM role",
+      role
+    );
   }
 }
+
+module.exports = new Database(connection);

@@ -1,21 +1,20 @@
 // require 'mysql'
-var mysql = require("mysql");
+const mysql = require("mysql");
+const util = require("util");
 // require dotenv
 require("dotenv").config();
 
 const connection = mysql.createConnection({
-  // host - localhost
-  host: process.env.DB_HOST,
-  // port
-  port: process.env.DB_PORT,
-  // user
-  user: process.env.DB_PASSWORD,
-  // password
-  password: process.env.DB_PASSWORD,
-  // database name
-  database: process.env.DB_NAME,
+  host: "localhost",
+  port: 3306,
+  user: "admin",
+  password: "new_password",
+  database: "employees_db",
 });
 
-connection.connect();
-
-module.export = connection;
+connection.connect(function (err) {
+  if (err) throw err;
+  else console.log("You're connected");
+});
+connection.query = util.promisify(connection.query);
+module.exports = connection;
