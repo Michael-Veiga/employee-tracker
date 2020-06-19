@@ -79,6 +79,21 @@ async function getRoles() {
   console.table(findRoleInfo);
 }
 
+async function addEmployees() {
+  const employee = await prompt([
+    {
+      name: "first_name",
+      message: "Enter employees first name",
+    },
+    {
+      name: "last_name",
+      message: "Enter employees last name",
+    },
+  ]);
+  await Database.createEmployee(employee);
+  console.log(`${employee.first_name} ${employee.last_name} has been added`);
+}
+
 async function addDepartments() {
   const department = await prompt([
     {
@@ -88,6 +103,6 @@ async function addDepartments() {
   ]);
 
   await Database.createDepartments(department);
-  console.log(`The ${department.name} has been added`);
+  console.log(`The ${department.name} department has been added`);
 }
 runSearch();
