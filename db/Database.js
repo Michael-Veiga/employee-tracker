@@ -5,7 +5,7 @@ class Database {
     this.connection = connection;
   }
 
-  createDepartments() {
+  createDepartments(department) {
     return this.connection.query("INSERT INTO department SET ?", department);
   }
   createEmployee() {

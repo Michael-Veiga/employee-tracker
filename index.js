@@ -1,4 +1,4 @@
-// require inquirer and console.table
+// require inquirer
 const { prompt } = require("inquirer");
 // require the Database class
 const Database = require("./db/Database");
@@ -13,13 +13,34 @@ async function runSearch() {
     name: "choice",
     message: "What would you like to do?",
     choices: [
-      "VIEW_EMPLOYEE",
-      "VIEW_DEPARTMENT",
-      "VIEW_ROLES",
-      "ADD_EMPLOYEE",
-      "ADD_DEPARTMENT",
-      "ADD_ROLES",
-      "EXIT",
+      {
+        name: "Show me all the employees",
+        value: "VIEW_EMPLOYEE",
+      },
+      {
+        name: "Show me all the departments",
+        value: "VIEW_DEPARTMENT",
+      },
+      {
+        name: "Show me all the roles",
+        value: "VIEW_ROLES",
+      },
+      {
+        name: "Add an employee",
+        value: "ADD_EMPLOYEE",
+      },
+      {
+        name: "Add a department",
+        value: "ADD_DEPARTMENT",
+      },
+      {
+        name: "Add a role",
+        value: "ADD_ROLES",
+      },
+      {
+        name: "Exit",
+        value: "EXIT",
+      },
     ],
   });
   // if the user selects to view employees, its going to call the getEmployees function down below
@@ -31,6 +52,10 @@ async function runSearch() {
       return getDepartments();
     case "VIEW_ROLES":
       return getRoles();
+    case "ADD_EMPLOYEE":
+      return addEmployees();
+    case "ADD_DEPARTMENT":
+      return addDepartments();
     case "EXIT":
       connection.end();
       break;
@@ -54,5 +79,15 @@ async function getRoles() {
   console.table(findRoleInfo);
 }
 
-async function addEmployees() {}
+async function addDepartments() {
+  const department = await prompt([
+    {
+      name: "name",
+      message: "Enter the name of the department",
+    },
+  ]);
+
+  await Database.createDepartments(department);
+  console.log(`The ${department.name} has been added`);
+}
 runSearch();
