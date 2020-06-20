@@ -48,6 +48,6 @@ This homework was pretty challenging, but I thought I did a pretty good job usin
 
 ## Media
 
-![Pic of app](https://github.com/Michael-Veiga/employee-tracker/blob/master/db/assets/images/etpic.JPG?raw=true)
+![Pic of app](https://github.com/Michael-Veiga/employee-tracker/blob/master/assets/images/etpic.JPG?raw=true)
 
-![Pic of app](https://github.com/Michael-Veiga/employee-tracker/blob/master/db/assets/images/etpic2.JPG)
+![Pic of app](https://github.com/Michael-Veiga/employee-tracker/blob/master/assets/images/etpic2.JPG?raw=true)
