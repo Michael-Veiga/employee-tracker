@@ -11,8 +11,8 @@ class Database {
   createEmployee(employee) {
     return this.connection.query("INSERT INTO employee SET ?", employee);
   }
-  createRole() {
-    return this.connection.query("INSERT INTO role SET ?", role);
+  createRole(roles) {
+    return this.connection.query("INSERT INTO roles SET ?", roles);
   }
   findDepartments() {
     return this.connection.query("SELECT * FROM department");

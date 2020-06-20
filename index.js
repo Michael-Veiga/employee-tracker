@@ -56,9 +56,11 @@ async function runSearch() {
       return addEmployees();
     case "ADD_DEPARTMENT":
       return addDepartments();
-    case "EXIT":
-      connection.end();
-      break;
+    case "ADD_ROLES":
+      return addRoles();
+    default:
+      "EXIT";
+      return process.exit();
   }
 }
 
@@ -77,6 +79,7 @@ async function getDepartments() {
 async function getRoles() {
   const findRoleInfo = await Database.findRole();
   console.table(findRoleInfo);
+  runSearch();
 }
 
 async function addEmployees() {
@@ -105,4 +108,23 @@ async function addDepartments() {
   await Database.createDepartments(department);
   console.log(`The ${department.name} department has been added`);
 }
+
+async function addRoles() {
+  const roles = await prompt([
+    {
+      name: "title",
+      message: "Enter the role title",
+    },
+    {
+      name: "salary",
+      message: "Enter the role salary",
+    },
+  ]);
+
+  await Database.createRole(roles);
+  console.log(`The ${roles.title} role has been added`);
+
+  runSearch();
+}
+
 runSearch();
