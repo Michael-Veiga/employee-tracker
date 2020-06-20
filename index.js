@@ -69,16 +69,21 @@ async function runSearch() {
 async function getEmployees() {
   const findEmployeeInfo = await Database.findEmployees();
   console.table(findEmployeeInfo);
+
+  runSearch();
 }
 
 async function getDepartments() {
   const findDepartmentInfo = await Database.findDepartments();
   console.table(findDepartmentInfo);
+
+  runSearch();
 }
 
 async function getRoles() {
   const findRoleInfo = await Database.findRole();
   console.table(findRoleInfo);
+
   runSearch();
 }
 
@@ -95,6 +100,8 @@ async function addEmployees() {
   ]);
   await Database.createEmployee(employee);
   console.log(`${employee.first_name} ${employee.last_name} has been added`);
+
+  runSearch();
 }
 
 async function addDepartments() {
@@ -107,6 +114,8 @@ async function addDepartments() {
 
   await Database.createDepartments(department);
   console.log(`The ${department.name} department has been added`);
+
+  runSearch();
 }
 
 async function addRoles() {

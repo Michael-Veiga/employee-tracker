@@ -18,7 +18,9 @@ class Database {
     return this.connection.query("SELECT * FROM department");
   }
   findEmployees() {
-    return this.connection.query("SELECT * FROM employee");
+    return this.connection.query(
+      "SELECT employee.id, employee.first_name, employee.last_name, roles.title, department.name AS department, roles.salary FROM employee LEFT JOIN roles ON employee.role_id = roles.id LEFT JOIN department ON roles.department_id = department.id;"
+    );
   }
   findRole() {
     return this.connection.query("SELECT * FROM roles");
