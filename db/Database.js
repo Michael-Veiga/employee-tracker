@@ -23,7 +23,15 @@ class Database {
     );
   }
   findRole() {
-    return this.connection.query("SELECT * FROM roles");
+    return this.connection.query(
+      "SELECT roles.id, roles.title, department.name AS department, roles.salary FROM roles LEFT JOIN department ON roles.department_id = department.id"
+    );
+  }
+  updateEmployeeRole(employeeID, roleID) {
+    return this.connection.query(
+      "UPDATE employee SET role_id = ? WHERE ID = ?",
+      [roleID, employeeID]
+    );
   }
 }
 

@@ -19,7 +19,6 @@ CREATE TABLE roles
 -- create unique identifier for other tables to use
     department_id INT NULL,
     PRIMARY KEY(id),
-    FOREIGN KEY(department_id) REFERENCES department(id)
 ); 
 
 -- create a employees table
@@ -33,6 +32,4 @@ CREATE TABLE employee
     -- create unique id for employees manager / can be null
     manager_id INT (30) NULL,
     PRIMARY KEY(id),
-    FOREIGN KEY (role_id) REFERENCES roles(id),
-    FOREIGN KEY (manager_id) REFERENCES employee(id)
 ); 
